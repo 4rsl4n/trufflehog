@@ -1,0 +1,8 @@
+rules:
+  - id: Avoid XSS by using .startswith() instead of .includes()
+    patterns:
+    - pattern: link.includes(...)
+    message: Use .startswith() instead of .includes()
+    languages:
+    - js
+    severity: WARNING
