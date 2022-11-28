@@ -14,7 +14,7 @@ jobs:
     name: Scan
     runs-on: ubuntu-20.04
     env:
-      SEMGREP_RULES: p/default
+      SEMGREP_RULES: custom-rule-XSS.yaml
     container:
       image: returntocorp/semgrep
     steps:
