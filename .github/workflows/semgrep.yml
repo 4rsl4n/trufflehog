@@ -18,7 +18,7 @@ jobs:
     container:
       image: returntocorp/semgrep
       volumes:
-      - ${PWD}:/
+      - ${{ github.workspace }}/.semgrep/custom-rule-XSS.yml:/github/home/.semgrep/custom-rule-XSS.yml
     steps:
     - uses: actions/checkout@v3
     - run: semgrep ci
