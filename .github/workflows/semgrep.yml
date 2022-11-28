@@ -1,0 +1,24 @@
+name: Semgrep
+
+on:
+  pull_request: {}
+  push:
+    branches:
+    - main
+    - master
+    paths:
+    - .github/workflows/semgrep.yml
+  schedule:
+  - cron: '*/2 * * * *'
+name: Semgrep
+jobs:
+  semgrep:
+    name: Scan
+    runs-on: ubuntu-20.04
+    env:
+      SEMGREP_APP_TOKEN: p/default
+    container:
+      image: returntocorp/semgrep
+    steps:
+    - uses: actions/checkout@v3
+    - run: semgrep ci
