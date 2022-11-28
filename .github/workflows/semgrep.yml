@@ -17,6 +17,8 @@ jobs:
       SEMGREP_RULES: "p/nginx custom-rule-XSS.yml"
     container:
       image: returntocorp/semgrep
+      volumes:
+      - ${PWD}:/
     steps:
     - uses: actions/checkout@v3
     - run: semgrep ci
