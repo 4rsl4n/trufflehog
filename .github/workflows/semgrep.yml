@@ -14,11 +14,9 @@ jobs:
     name: Scan
     runs-on: ubuntu-20.04
     env:
-      SEMGREP_RULES: "p/nginx custom-rule-XSS.yml"
+      SEMGREP_RULES: "p/default"
     container:
       image: returntocorp/semgrep
-      volumes:
-      - ${{ github.workspace }}/.semgrep/:/github/home/.semgrep/
     steps:
     - uses: actions/checkout@v3
-    - run: semgrep ci
+    - run: semgrep ci --json --output findings.json
