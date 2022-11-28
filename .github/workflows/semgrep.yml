@@ -14,7 +14,7 @@ jobs:
     name: Scan
     runs-on: ubuntu-20.04
     env:
-      SEMGREP_APP_TOKEN: p/default
+      SEMGREP_RULES: p/default
     container:
       image: returntocorp/semgrep
     steps:
