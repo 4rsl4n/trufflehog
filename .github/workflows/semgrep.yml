@@ -25,4 +25,9 @@ jobs:
       run: |
         out=$(semgrep ci --junit-xml || true)
         echo "::set-output name=junit::$out"
+  job2:
+    runs-on: ubuntu-20.04
+    needs: semgrep
+    steps:
+      - run : echo "${{needs.semgrep.outputs.output-junit}}"
       
