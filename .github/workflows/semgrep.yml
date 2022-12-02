@@ -23,6 +23,7 @@ jobs:
     - uses: actions/checkout@v3
     - id: junit-out
       run: |
+        echo "zxcv"
         semgrep ci --junit-xml || true
         echo "::set-output name=junit::$out"
       
