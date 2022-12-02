@@ -23,12 +23,6 @@ jobs:
     - uses: actions/checkout@v3
     - id: junit-out
       run: |
-        out=${ semgrep ci --suppress-errors --json }
+        out=${ semgrep ci --json }
         echo "::set-output name=junit::$out"
-      
-  job2:
-    runs-on: ubuntu-20.04
-    needs: semgrep
-    steps:
-      - run : echo "${{needs.semgrep.outputs.output-junit}}"
       
