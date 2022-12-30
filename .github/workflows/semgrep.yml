@@ -39,7 +39,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-central-1
       - run : aws s3 cp trufflehog-findings.json s3://semgrepci-findings-from-githubactions/
-      - name: Invoke semgrep Lambda function 2
+      - name: Invoke semgrep Lambda function
         uses: gagoar/invoke-aws-lambda@master
         with:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
