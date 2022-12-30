@@ -48,7 +48,3 @@ jobs:
           REGION: eu-central-1
           FunctionName: semgreppipeline-function
           Payload: '{ "filename": "trufflehog-findings.json", "repository-name": "${{ github.event.repository.name }}" }'
-      - name: echo response payload
-        run: |
-          echo '${{ fromJSON(steps.foobar.outputs.response).Payload }}' > invocation-response.json
-          cat invocation-response.json
