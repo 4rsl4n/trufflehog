@@ -40,14 +40,10 @@ jobs:
           aws-region: eu-central-1
       - run : aws s3 cp trufflehog-findings.json s3://semgrepci-findings-from-githubactions/
       - name: Invoke semgrep Lambda function
-        id: foobar
         uses: gagoar/invoke-aws-lambda@master
         with:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           REGION: eu-central-1
-          LogType: Tail
           FunctionName: semgreppipeline-function
           Payload: '{ "filename": "trufflehog-findings.json", "repository-name": "${{ github.event.repository.name }}" }'
-      - name: Store tail logs to file
-        run: echo "${{ fromJSON(steps.foobar.outputs.response).LogResult }}" > invocation-logs.json
